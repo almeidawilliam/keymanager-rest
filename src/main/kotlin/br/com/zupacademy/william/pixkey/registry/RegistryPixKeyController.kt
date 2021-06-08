@@ -25,7 +25,7 @@ class RegistryPixKeyController(
         val response = grpcClient.registry(clientRequest)
 
         return HttpResponse.created(
-            HttpResponse.uri("localhost:8080/customer/$idCustomer/pix/keys/${response.idPix}")
+            HttpResponse.uri("http://localhost:8080/customer/$idCustomer/pix/keys/${response.idPix}")
         )
     }
 }
