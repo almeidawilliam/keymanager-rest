@@ -1,0 +1,118 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "br.com.zupacademy.william";
+option java_outer_classname = "KeymanagerGrpc";
+option objc_class_prefix = "HLW";
+
+package br.com.zupacademy.william;
+
+import "google/protobuf/timestamp.proto";
+
+service KeymanagerRegistryGrpcService {
+  rpc registry (RegistryRequest) returns (RegistryResponse) {}
+}
+
+service KeymanagerRemoveGrpcService {
+  rpc remove (RemoveRequest) returns (RemoveResponse) {}
+}
+
+service KeymanagerFindGrpcService {
+  rpc find (FindRequest) returns (FindResponse) {}
+}
+
+service KeymanagerListGrpcService {
+  rpc list (ListRequest) returns (ListResponse) {}
+}
+
+//list
+message ListRequest {
+  string idCustomer = 1;
+}
+
+message ListResponse {
+  string idCustomer = 1;
+  repeated PixKey pixKeys = 2;
+}
+
+message PixKey {
+  int64 idPix = 1;
+  KeyType keyType = 2;
+  string keyValue = 3;
+  AccountType accountType = 4;
+  google.protobuf.Timestamp createdAt = 5;
+}
+
+//find
+message FindRequest {
+  int64 idPix = 1;
+  string idCustomer = 2;
+}
+
+message FindResponse {
+  int64 idPix = 1;
+  KeyType keyType = 2;
+  string keyValue = 3;
+  Customer customer = 4;
+  CustomerAccount customerAccount = 5;
+  google.protobuf.Timestamp createdAt = 6;
+}
+
+message Customer {
+  string idCustomer = 1;
+  string name = 2;
+  string cpf = 3;
+}
+
+message CustomerAccount {
+  string institutionName = 1;
+  string agency = 2;
+  string account = 3;
+  AccountType accountType = 4;
+}
+
+//remove
+message RemoveRequest {
+  int64 idPix = 1;
+  string idCustomer = 2;
+}
+
+message RemoveResponse {
+  int64 idPix = 1;
+  string idCustomer = 2;
+}
+//registry
+
+message CorpoDeErro {
+  repeated ErrorDetails errors = 1;
+}
+
+message ErrorDetails {
+  string campo = 1;
+  string erro = 2;
+}
+
+enum KeyType {
+  CHAVE_INVALIDA = 0;
+  CPF = 1;
+  PHONE = 2;
+  EMAIL = 3;
+  RANDOM = 4;
+}
+
+enum AccountType {
+  CONTA_INVALIDA = 0;
+  CONTA_CORRENTE = 1;
+  CONTA_POUPANCA = 2;
+}
+
+message RegistryRequest {
+  string idCliente = 1;
+  KeyType tipoChave = 2;
+  string valorChave = 3;
+  AccountType tipoConta = 4;
+}
+
+message RegistryResponse {
+  string idPix = 1;
+}
