@@ -26,7 +26,7 @@ import javax.inject.Singleton
 internal class FindPixKeyControllerTest {
 
     @field:Inject
-    lateinit var grpcClient: KeymanagerFindGrpcServiceGrpc.KeymanagerFindGrpcServiceBlockingStub
+    lateinit var grpcClient: KeymanagerFindServiceGrpc.KeymanagerFindServiceBlockingStub
 
     @field:Inject
     @field:Client("/")
@@ -78,6 +78,6 @@ internal class FindPixKeyControllerTest {
     internal class mockClients {
 
         @Singleton
-        fun mockGrpcClient() = mock(KeymanagerFindGrpcServiceGrpc.KeymanagerFindGrpcServiceBlockingStub::class.java)
+        fun mockGrpcClient() = mock(KeymanagerFindServiceGrpc.KeymanagerFindServiceBlockingStub::class.java)
     }
 }

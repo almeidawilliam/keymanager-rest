@@ -22,10 +22,10 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @MicronautTest
-internal class PixKeyListEndpointTest {
+internal class PixKeyListControllerTest {
 
     @field:Inject
-    lateinit var grpcClient: KeymanagerListGrpcServiceGrpc.KeymanagerListGrpcServiceBlockingStub
+    lateinit var grpcClient: KeymanagerListServiceGrpc.KeymanagerListServiceBlockingStub
 
     @field:Inject
     @field:Client("/")
@@ -84,6 +84,6 @@ internal class PixKeyListEndpointTest {
     internal class MockClient {
 
         @Singleton
-        fun mockGrpcClient() = mock(KeymanagerListGrpcServiceGrpc.KeymanagerListGrpcServiceBlockingStub::class.java)
+        fun mockGrpcClient() = mock(KeymanagerListServiceGrpc.KeymanagerListServiceBlockingStub::class.java)
     }
 }

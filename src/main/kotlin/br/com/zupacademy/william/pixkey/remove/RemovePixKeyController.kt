@@ -1,6 +1,6 @@
 package br.com.zupacademy.william.pixkey.remove
 
-import br.com.zupacademy.william.KeymanagerRemoveGrpcServiceGrpc
+import br.com.zupacademy.william.KeymanagerRemoveServiceGrpc
 import br.com.zupacademy.william.RemoveRequest
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.Controller
@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 @Controller("/customer/{idCustomer}/pix/keys/{idPixKey}")
 class RemovePixKeyController(
-    @field:Inject val grpcClient: KeymanagerRemoveGrpcServiceGrpc.KeymanagerRemoveGrpcServiceBlockingStub
+    @field:Inject val grpcClient: KeymanagerRemoveServiceGrpc.KeymanagerRemoveServiceBlockingStub
 ) {
 
     @Delete

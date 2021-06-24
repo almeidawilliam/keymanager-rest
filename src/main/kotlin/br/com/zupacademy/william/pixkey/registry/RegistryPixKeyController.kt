@@ -1,6 +1,6 @@
 package br.com.zupacademy.william.pixkey.registry
 
-import br.com.zupacademy.william.KeymanagerRegistryGrpcServiceGrpc
+import br.com.zupacademy.william.KeymanagerRegistryServiceGrpc
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.Body
 import io.micronaut.http.annotation.Controller
@@ -13,7 +13,7 @@ import javax.validation.Valid
 @Validated
 @Controller("/customer/{idCustomer}/pix/keys")
 class RegistryPixKeyController(
-    @field:Inject val grpcClient: KeymanagerRegistryGrpcServiceGrpc.KeymanagerRegistryGrpcServiceBlockingStub
+    @field:Inject val grpcClient: KeymanagerRegistryServiceGrpc.KeymanagerRegistryServiceBlockingStub
 ) {
 
     @Post

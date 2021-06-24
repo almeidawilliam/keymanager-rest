@@ -1,6 +1,6 @@
 package br.com.zupacademy.william.pixkey.registry
 
-import br.com.zupacademy.william.KeymanagerRegistryGrpcServiceGrpc
+import br.com.zupacademy.william.KeymanagerRegistryServiceGrpc
 import br.com.zupacademy.william.RegistryResponse
 import br.com.zupacademy.william.pixkey.AccountType
 import br.com.zupacademy.william.pixkey.GrpcClientFactory
@@ -25,7 +25,7 @@ import javax.inject.Singleton
 internal class RegistryPixKeyControllerTest {
 
     @field:Inject
-    lateinit var grpcClient: KeymanagerRegistryGrpcServiceGrpc.KeymanagerRegistryGrpcServiceBlockingStub
+    lateinit var grpcClient: KeymanagerRegistryServiceGrpc.KeymanagerRegistryServiceBlockingStub
 
     @field:Inject
     @field:Client("/")
@@ -56,6 +56,6 @@ internal class RegistryPixKeyControllerTest {
     internal class MockitoStubFactory {
 
         @Singleton
-        fun stubMock() = mock(KeymanagerRegistryGrpcServiceGrpc.KeymanagerRegistryGrpcServiceBlockingStub::class.java)
+        fun stubMock() = mock(KeymanagerRegistryServiceGrpc.KeymanagerRegistryServiceBlockingStub::class.java)
     }
 }

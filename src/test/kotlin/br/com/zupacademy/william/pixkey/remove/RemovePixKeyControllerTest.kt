@@ -1,7 +1,6 @@
 package br.com.zupacademy.william.pixkey.remove
 
-import br.com.zupacademy.william.KeymanagerRegistryGrpcServiceGrpc
-import br.com.zupacademy.william.KeymanagerRemoveGrpcServiceGrpc
+import br.com.zupacademy.william.KeymanagerRemoveServiceGrpc
 import br.com.zupacademy.william.RemoveResponse
 import br.com.zupacademy.william.pixkey.GrpcClientFactory
 import io.micronaut.context.annotation.Factory
@@ -11,7 +10,7 @@ import io.micronaut.http.HttpStatus
 import io.micronaut.http.client.HttpClient
 import io.micronaut.http.client.annotation.Client
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
@@ -24,7 +23,7 @@ import javax.inject.Singleton
 internal class RemovePixKeyControllerTest {
 
     @field:Inject
-    lateinit var grpcClient: KeymanagerRemoveGrpcServiceGrpc.KeymanagerRemoveGrpcServiceBlockingStub
+    lateinit var grpcClient: KeymanagerRemoveServiceGrpc.KeymanagerRemoveServiceBlockingStub
 
     @field:Inject
     @field:Client("/")
@@ -54,7 +53,7 @@ internal class RemovePixKeyControllerTest {
     internal class MockClient {
 
         @Singleton
-        fun mockGrpcClient() = mock(KeymanagerRemoveGrpcServiceGrpc.KeymanagerRemoveGrpcServiceBlockingStub::class.java)
+        fun mockGrpcClient() = mock(KeymanagerRemoveServiceGrpc.KeymanagerRemoveServiceBlockingStub::class.java)
     }
 
 }

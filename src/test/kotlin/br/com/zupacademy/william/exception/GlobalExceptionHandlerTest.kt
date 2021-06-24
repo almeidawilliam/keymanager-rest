@@ -1,13 +1,13 @@
 package br.com.zupacademy.william.exception
 
-import br.com.zupacademy.william.CorpoDeErro
+import br.com.zupacademy.william.ErrorBody
 import br.com.zupacademy.william.ErrorDetails
 import io.grpc.Status
 import io.grpc.StatusRuntimeException
 import io.grpc.protobuf.StatusProto
 import io.micronaut.http.HttpRequest
 import io.micronaut.http.HttpStatus
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 internal class GlobalExceptionHandlerTest {
@@ -49,11 +49,11 @@ internal class GlobalExceptionHandlerTest {
     @Test
     fun `should return 400 when grpc returns invalid argument`() {
         val errorDetails = ErrorDetails.newBuilder()
-            .setCampo("blabla")
-            .setErro("invalid key (CPF)")
+            .setField("blabla")
+            .setMessage("invalid key (CPF)")
             .build()
 
-        val errorBody = CorpoDeErro.newBuilder()
+        val errorBody = ErrorBody.newBuilder()
             .addAllErrors(listOf(errorDetails))
             .build()
 

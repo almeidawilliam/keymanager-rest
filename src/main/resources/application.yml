@@ -8,7 +8,7 @@ grpc:
     max-retry-attempts: 10
   channels:
     keyManager:
-      address: 'localhost:50051'
+      address: '${GRPC_CLIENT:`localhost:50051`}'#'host.docker.internal:50051'
       plaintext: true
       max-retry-attempts: 5
 

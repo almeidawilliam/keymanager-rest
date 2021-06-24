@@ -1,6 +1,6 @@
 package br.com.zupacademy.william.pixkey.list
 
-import br.com.zupacademy.william.KeymanagerListGrpcServiceGrpc
+import br.com.zupacademy.william.KeymanagerListServiceGrpc
 import br.com.zupacademy.william.ListRequest
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.Controller
@@ -9,7 +9,9 @@ import io.micronaut.http.annotation.PathVariable
 import javax.inject.Inject
 
 @Controller("/customer/{idCustomer}/pix/keys")
-class PixKeyListEndpoint(@field:Inject val grpcClient: KeymanagerListGrpcServiceGrpc.KeymanagerListGrpcServiceBlockingStub) {
+class PixKeyListController(
+    @field:Inject val grpcClient: KeymanagerListServiceGrpc.KeymanagerListServiceBlockingStub
+) {
 
     @Get
     fun list(@PathVariable idCustomer: String): HttpResponse<Any> {

@@ -21,17 +21,11 @@ data class RegistryPixKeyRequest(
 ) {
 
     fun toGrpcDto(idCustomer: String): RegistryRequest {
-        val registryRequestBuilder = RegistryRequest.newBuilder()
-            .setIdCliente(idCustomer)
-            .setTipoChave(br.com.zupacademy.william.KeyType.valueOf(keyType.name))
-            .setTipoConta(accountType.grpcEnum)
-
-        if (keyType == KeyType.RANDOM) {
-            return registryRequestBuilder.build()
-        }
-
-        return registryRequestBuilder
-            .setValorChave(keyValue)
+        return RegistryRequest.newBuilder()
+            .setIdCustomer(idCustomer)
+            .setKeyType(br.com.zupacademy.william.KeyType.valueOf(keyType.name))
+            .setAccountType(accountType.grpcEnum)
+            .setKeyValue(if (keyType == KeyType.RANDOM) "" else keyValue)
             .build()
     }
 }

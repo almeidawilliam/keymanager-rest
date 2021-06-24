@@ -1,6 +1,6 @@
 package br.com.zupacademy.william.exception
 
-import br.com.zupacademy.william.CorpoDeErro
+import br.com.zupacademy.william.ErrorBody
 import io.grpc.Status
 import io.grpc.StatusRuntimeException
 import io.grpc.protobuf.StatusProto
@@ -25,9 +25,9 @@ class GlobalExceptionHandler : ExceptionHandler<StatusRuntimeException, HttpResp
                     val statusProto = StatusProto.fromThrowable(exception)
 
                     val fieldErrors: List<String> = statusProto!!.detailsList
-                        .map { detail -> detail.unpack(CorpoDeErro::class.java) }
+                        .map { detail -> detail.unpack(ErrorBody::class.java) }
                         .flatMap { detailUnpacked -> detailUnpacked.errorsList }
-                        .map { error -> error.erro }
+                        .map { error -> error.message }
                         .toList()
 
                     val errorsBody = ErrorsBody(fieldErrors)
